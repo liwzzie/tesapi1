@@ -1,4 +1,5 @@
 // require('dotenv').config(); // Tambahkan untuk membaca file .env
+require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
@@ -28,7 +29,9 @@ db.connect((err) => {
 });
 
 // Kunci rahasia untuk JWT (gunakan variabel lingkungan untuk keamanan)
-const secretKey = process.env.JWT_SECRET || 'YOUR_SECRET_KEY'; // Ganti dengan kunci rahasia yang aman
+const secretKey = process.env.JWT_SECRET; // Kunci rahasia hanya dari .env
+console.log('JWT Secret Key:', secretKey);
+
 
 // Login API
 app.post('/login', (req, res) => {

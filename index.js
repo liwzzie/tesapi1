@@ -6,8 +6,12 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 
 const app = express();
-
+ 
 // Middleware
+app.get("/", (req, res) => {
+  res.json({message: "Hello tes"});
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -24,11 +28,11 @@ app.options('*', cors());
 
 // Koneksi ke MySQL Database
 const db = mysql.createConnection({
-  host: 'sql12.freesqldatabase.com', // Host database
-  user: 'sql12748328',              // Username database
-  password: 'QfB8e6dDr4',           // Password database
-  database: 'sql12748328',          // Nama database
-  port: 3306                        // Port database
+  host: 'sql12.freesqldatabase.com', 
+  user: 'sql12748328',             
+  password: 'QfB8e6dDr4',           
+  database: 'sql12748328',         
+  port: 3306                        
 });
 
 db.connect((err) => {
